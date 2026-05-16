@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(cmd /c \"dir /a \"\"C:\\\\dev-work\\\\ninety-nine\\\\rodriguez-sp-submission\"\"\")",
+      "PowerShell(cmd /c \"dir /a /s /b \"\"C:\\\\dev-work\\\\ninety-nine\\\\rodriguez-sp-submission\\\\attestation\"\"\")",
+      "PowerShell(cmd /c \"dir /a /s /b \"\"C:\\\\dev-work\\\\ninety-nine\\\\rodriguez-sp-submission\\\\manual\"\"\")",
+      "PowerShell(cmd /c \"dir /a /s /b \"\"C:\\\\dev-work\\\\ninety-nine\\\\rodriguez-sp-submission\\\\sp-manuscript\"\"\")",
+      "PowerShell(cmd /c \"dir /a /s /b \"\"C:\\\\dev-work\\\\ninety-nine\\\\rodriguez-sp-submission\\\\sp-journal\"\"\")",
+      "PowerShell(cmd /c \"dir /a /s /b \"\"C:\\\\dev-work\\\\ninety-nine\\\\rodriguez-sp-submission\\\\src\"\"\")"
+    ]
+  }
+}

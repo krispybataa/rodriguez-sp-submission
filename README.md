@@ -11,7 +11,7 @@ The repository has the following file-structure
 ```
 📦attestation
  ┣ 📜ORI-Attestation-Form.docx
-📦(journal article) 
+📦sp-journal (journal article) 
 📦manual
  ┣ 📦images
  ┣ 📜DEVELOPMENT.md
@@ -69,7 +69,7 @@ The directory is a module binding the respective repository of the SP manuscript
 ```bash
 git submodule add https://github.com/krispybataa/sp-manuscript sp-manuscript
 ```
-### (Journal Article)
+### `sp-journal` (Journal Article)
 This 
 The directory is a module binding the respective repository of the Journal Article to this one via: 
 ```bash
