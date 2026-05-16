@@ -71,6 +71,7 @@ git submodule add https://github.com/krispybataa/sp-manuscript sp-manuscript
 ```
 ### `sp-journal` (Journal Article)
 This 
+
 The directory is a module binding the respective repository of the Journal Article to this one via: 
 ```bash
 git submodule add https://github.com/krispybataa/sp-journal sp-journal
