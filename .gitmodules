@@ -1,0 +1,6 @@
+[submodule "a-mmc"]
+	path = a-mmc
+	url = https://github.com/krispybataa/a-mmc
+[submodule "sp-manuscript"]
+	path = sp-manuscript
+	url = https://github.com/krispybataa/sp-manuscript
