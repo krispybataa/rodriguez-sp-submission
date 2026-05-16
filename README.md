@@ -13,6 +13,7 @@ The repository has the following file-structure
  ┣ 📜ORI-Attestation-Form.docx
 📦(journal article) 
 📦manual
+ ┣ 📦images
  ┣ 📜DEVELOPMENT.md
  ┗ 📜HELP.md
 📦sp-manuscript (SP Docs)
