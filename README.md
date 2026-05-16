@@ -72,7 +72,7 @@ git submodule add https://github.com/krispybataa/sp-manuscript sp-manuscript
 This 
 The directory is a module binding the respective repository of the Journal Article to this one via: 
 ```bash
-git submodule add
+git submodule add https://github.com/krispybataa/sp-journal sp-journal
 ```
 ### `a-mmc` (Source Code)
 This contains the full system source code of the system, bound via under the module a-mmc. The internal directory is as follows: 

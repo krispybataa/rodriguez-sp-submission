@@ -4,3 +4,6 @@
 [submodule "sp-manuscript"]
 	path = sp-manuscript
 	url = https://github.com/krispybataa/sp-manuscript
+[submodule "sp-journal"]
+	path = sp-journal
+	url = https://github.com/krispybataa/sp-journal
