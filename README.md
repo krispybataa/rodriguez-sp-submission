@@ -25,6 +25,8 @@ The repository has the following file-structure
 ### `sp-manuscript` (SP Documents)
 This directory contains the full contents of the SP manuscript. Below is the respective file-tree for the manuscript repository. 
 
+>**NOTE** `(SIMILARITY REPORT)_rodriguez_sp-manuscript_trimmed.pdf` contains the Turnitin Similiarity Report for the Full manuscript 
+
 ```
   sp-manuscript/
   ├── rodriguez_sp-manuscript.tex       # Main document entry point
@@ -46,9 +48,6 @@ This directory contains the full contents of the SP manuscript. Below is the res
   ├── appx-ueq-qual.tex                 # Appendix: UEQ qualitative data
   ├── biblio.bib                        # BibTeX bibliography (IEEE style)
   ├── Rodriguez-SP-Proposal.tex         # Original SP proposal source
-  ├── Rodriguez-SP-Proposal.pdf         # SP proposal compiled
-  ├── RODRIGUEZ_DEFENSE.pptx            # Defense presentation
-  ├── RODRIGUEZ_DEFENSE_APPX.pptx       # Defense appendix slides
   ├── images/
   │   ├── ch-3/                         # TF figures 
   │   ├── ch-4/                         # Design artifacts 
@@ -107,11 +106,11 @@ a-mmc/
   ├── a-mmc_infra/
   │   └── nginx/                  # Reverse proxy config and Dockerfile
   ├── a-mmc_kiosk/
-  │   └── src/
-  │       ├── components/         # Kiosk-specific UI 
-  │       ├── data/               # triageLogic.js (Synced with main system)
-  │       ├── pages/              # Kiosk screens
-  │       └── services/           # API client
+      └── src/
+          ├── components/         # Kiosk-specific UI 
+          ├── data/               # triageLogic.js (Synced with main system)
+          ├── pages/              # Kiosk screens
+          └── services/           # API client
 ```
 The directory is a module binding the respective repository of the SP manuscript to this one via: 
 ```bash
