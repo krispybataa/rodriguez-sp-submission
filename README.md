@@ -135,7 +135,7 @@ a-mmc/
   │       └── services/           # API client, PDF export, upload stub
   ├── a-mmc_infra/
   │   └── nginx/                  # Reverse proxy config and Dockerfile
-  ├── a-mmc_kiosk/
+  └── a-mmc_kiosk/
       └── src/
           ├── components/         # Kiosk-specific UI 
           ├── data/               # triageLogic.js (Synced with main system)
