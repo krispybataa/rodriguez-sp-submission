@@ -20,6 +20,7 @@ The repository has the following file-structure
 📦a-mmc (src)
 📜README.md
 ```
+Furthermore, the `sp-journal`, `sp-manuscript`, `a-mmc` are modules set-up to automatically track the main branch of the respective repositories. Further details may be found below the respective folder description. 
 ## Description of the Directories/Files
 
 ### `sp-manuscript` (SP Documents)
@@ -29,6 +30,7 @@ This directory contains the full contents of the SP manuscript. Below is the res
 
 ```
   sp-manuscript/
+  ├── .github/workflows/                # Automation for submission repository
   ├── rodriguez_sp-manuscript.tex       # Main document entry point
   ├── rodriguez_sp-manuscript.pdf       # Compiled output
   ├── titlepage.tex                     # Title page
@@ -69,7 +71,35 @@ The directory is a module binding the respective repository of the SP manuscript
 git submodule add https://github.com/krispybataa/sp-manuscript sp-manuscript
 ```
 ### `sp-journal` (Journal Article)
-This 
+>**NOTE** `(SIMILARITY_REPORT)_rodriguez-sp-journal_trimmed.pdf` contains the Turnitin Similiarity Report for the ACM Journal Write-up
+
+This directory contains the corresponding ACM journal write-up as a part of the submission requirements.  
+```
+sp-journal/
+  ├── .github/workflows/                # Automation for submission repository
+  ├── images/                           # Images Cited in journal 
+  ├── samples/
+  │   ├── abbrev.bib
+  │   └── software.bib
+  ├── .gitignore
+  ├── ACM-Reference-Format.bst
+  ├── Makefile
+  ├── README.md
+  ├── acmart.bib
+  ├── acmart.dtx
+  ├── acmart.ins
+  ├── acmauthoryear.bbx
+  ├── acmauthoryear.cbx
+  ├── acmdatamodel.dbx
+  ├── acmnumeric.bbx
+  ├── acmnumeric.cbx
+  ├── build.ps1
+  ├── references.bib
+  ├── rodriguez-sp-journal.fls
+  ├── rodriguez-sp-journal.pdf
+  ├── rodriguez-sp-journal.tex
+  └── (SIMILARITY_REPORT)_rodriguez-sp-journal_trimmed.pdf  # Turnitin Similarity Report
+```
 
 The directory is a module binding the respective repository of the Journal Article to this one via: 
 ```bash
@@ -79,7 +109,7 @@ git submodule add https://github.com/krispybataa/sp-journal sp-journal
 This contains the full system source code of the system, bound via under the module a-mmc. The internal directory is as follows: 
 ```
 a-mmc/
-  ├── .github/workflows/          # CI pipelines for backend, frontend, kiosk
+  ├── .github/workflows/          # CI pipelines for backend, frontend, kiosk, 
   ├── a-mmc_backend/
   │   ├── app/
   │   │   ├── models/             # SQLAlchemy models
