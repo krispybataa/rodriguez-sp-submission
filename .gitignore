@@ -2,6 +2,7 @@
 ~$*
 ~WRL*.tmp
 *.tmp
+.claude 
 
 # LaTeX build artifacts
 *.aux
