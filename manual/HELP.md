@@ -1,4 +1,4 @@
-# Alagang MMC — User Manual
+# Alagang MMC: User Manual
 
 ## Overview
 
@@ -22,10 +22,10 @@ A-MMC is a pre-consultation coordination system. Patients use it to find clinici
 
 ## Roles
 
-- **Patient** — Creates an account, finds clinicians, books and manages appointments.
-- **Secretary** — Manages appointment requests on behalf of a linked clinician.
-- **Clinician** — Views and manages their own schedule, profile, and incoming appointments.
-- **System Administrator** — Manages user accounts and monitors system activity.
+- **Patient**: Creates an account, finds clinicians, books and manages appointments.
+- **Secretary**:  Manages appointment requests on behalf of a linked clinician.
+- **Clinician**:  Views and manages their own schedule, profile, and incoming appointments.
+- **System Administrator**:  Manages user accounts and monitors system activity.
 
 ---
 
@@ -35,15 +35,15 @@ A-MMC is a pre-consultation coordination system. Patients use it to find clinici
 
 1. Go to `[SYSTEM URL]` and select **Register** or follow any booking prompt that directs you to sign up.
 2. Complete the three-step registration form:
-   - **Step 1 — Personal Information:** First name, last name, middle name (optional), birthday, gender, civil status, nationality, religion, occupation.
-   - **Step 2 — Contact and Address:** Mobile number (format: `09XXXXXXXXX`), address line, province, city, barangay, country.
-   - **Step 3 — Account Credentials:** Email address, password.
+   - **Step 1: Personal Information:** First name, last name, middle name (optional), birthday, gender, civil status, nationality, religion, occupation.
+   - **Step 2: Contact and Address:** Mobile number (format: `09XXXXXXXXX`), address line, province, city, barangay, country.
+   - **Step 3:  Account Credentials:** Email address, password.
 3. Fields marked with an asterisk are required.
 4. Name fields cannot contain numbers.
 5. You must be at least 15 years old to register.
 6. After registering, you are logged in automatically and redirected to your intended page.
 
-![SCREENSHOT: Registration form — Step 1 personal information fields](docs/screenshots/register-step1.png)
+![SCREENSHOT: Registration form — Step 1 personal information fields](images/patient-scs/register/1.png)
 
 ---
 
@@ -53,8 +53,8 @@ From the home page, you are brought to the **Find a Doctor** page.
 
 Two paths are available:
 
-- **I know which doctor I need** — Takes you directly to the clinician directory where you can search and filter by specialty, department, and HMO accreditation.
-- **Help me find one** — Opens a two-step guided search. First, select your HMO (or choose "None"). Then select the symptom or concern that best matches your situation. The system returns a list of matching clinicians.
+- **I know which doctor I need**:  Takes you directly to the clinician directory where you can search and filter by specialty, department, and HMO accreditation.
+- **Help me find one**:  Opens a two-step guided search. First, select your HMO (or choose "None"). Then select the symptom or concern that best matches your situation. The system returns a list of matching clinicians.
 
 On the clinician directory, each card shows the clinician's name, title, specialty, department, and accepted HMOs. Select a card to open the full clinician profile.
 
@@ -65,9 +65,9 @@ The clinician profile shows:
 - Schedule (days and time windows available)
 - Background information
 
-![SCREENSHOT: Clinician directory with filter panel](docs/screenshots/clinician-directory.png)
+![SCREENSHOT: Clinician directory with filter panel](images/patient-scs/2.png)
 
-![SCREENSHOT: Individual clinician profile page](docs/screenshots/clinician-profile.png)
+![SCREENSHOT: Individual clinician profile page](images/patient-scs/3.png)
 
 ---
 
@@ -87,7 +87,7 @@ The clinician profile shows:
 
 Appointments that fall in the past or within the current time window cannot be booked.
 
-![SCREENSHOT: Booking form with date picker and slot selector](docs/screenshots/book-appointment.png)
+![SCREENSHOT: Booking form with date picker and slot selector](images/patient-scs/5.png)
 
 ---
 
@@ -117,7 +117,7 @@ For a full appointment history, go to **Dashboard > My Appointments**.
 | Cancelled | Cancelled by you or the clinic |
 | Done | Consultation has been completed |
 
-![SCREENSHOT: Patient dashboard showing appointment list](docs/screenshots/patient-dashboard.png)
+![SCREENSHOT: Patient dashboard showing appointment list](images/patient-scs/8.png)
 
 ---
 
@@ -129,7 +129,7 @@ Staff use a separate login page at `[SYSTEM URL]/staff/login`. Do not use the pa
 
 On the staff login page, select your role (Clinician or Secretary) before entering your credentials.
 
-![SCREENSHOT: Staff login page with role selector](docs/screenshots/staff-login.png)
+![SCREENSHOT: Staff login page with role selector](images/doc-scs/2026-05-18%2013.27.30%20unicorn-prod.up.railway.app%20d1831699c899.png)
 
 ---
 
@@ -146,8 +146,6 @@ Fields that can be updated:
 - Background information (bio text)
 - Profile picture
 
-Profile picture upload requires a file storage service to be connected. If the system shows no upload option, contact the administrator.
-
 ---
 
 ### Managing Schedules
@@ -160,7 +158,7 @@ Enter times in 24-hour format. For example, an afternoon slot starting at 2:00 P
 
 When you save a schedule change, the system automatically regenerates timeslots for the next 60 days based on the new settings.
 
-![SCREENSHOT: Schedule manager with day/time grid](docs/screenshots/schedule-manager.png)
+![SCREENSHOT: Schedule manager with day/time grid](images/doc-scs/6.png)
 
 ---
 
@@ -188,9 +186,9 @@ Go to **Appointments** for the full inbox across all dates.
 
 When you request a reschedule, a notification is sent to the patient.
 
-![SCREENSHOT: Today's view with queue, done, and cancelled counts](docs/screenshots/clinician-today.png)
+![SCREENSHOT: Today's view with queue, done, and cancelled counts](images/doc-scs/1.png)
 
-![SCREENSHOT: Appointment drawer open with status controls](docs/screenshots/appointment-drawer.png)
+![SCREENSHOT: Appointment drawer open with status controls](images/doc-scs/5.png)
 
 ---
 
@@ -230,7 +228,8 @@ The admin interface is available at `[SYSTEM URL]/admin`.
 
 Patient accounts cannot be deleted from the admin interface.
 
-![SCREENSHOT: Admin clinician list with Add and Delete actions](docs/screenshots/admin-clinicians.png)
+![SCREENSHOT: Admin clinician list with Add and Delete actions](images/admin-scs/3.png)
+![SCREENSHOT: Admin secretary list with Add and Delete actions](images/admin-scs/4.png)
 
 ---
 
@@ -245,7 +244,7 @@ Detailed analytics are available at `[SYSTEM URL]/admin/analytics`. The analytic
 - Bookings by day of week.
 - Top 5 most-booked clinicians.
 
-![SCREENSHOT: Admin analytics page with charts](docs/screenshots/admin-analytics.png)
+![SCREENSHOT: Admin analytics page with charts](images/admin-scs/2.png)
 
 ---
 
@@ -267,13 +266,13 @@ From the home screen, two options are available:
 
 The kiosk returns to the home screen automatically after 2 minutes of inactivity.
 
-![SCREENSHOT: Kiosk home screen with Browse Directory and Find a Specialist buttons](docs/screenshots/kiosk-home.png)
-
-![SCREENSHOT: Kiosk clinician detail screen with schedule and QR code](docs/screenshots/kiosk-clinician-detail.png)
+![SCREENSHOT: Kiosk home screen with Browse Directory and Find a Specialist buttons](images/kiosk-scs/1.png)
+![SCREENSHOT: Kiosk clinician detail screen with schedule and QR code](images/kiosk-scs/4.png)
+![SCREENSHOT: Kiosk clinician detail screen with schedule and QR code](images/kiosk-scs/3.png)
 
 ---
 
-## Common Issues
+## Common Issues / FAQ
 
 **Cannot log in after several attempts.**
 Entering the wrong password 5 times in a row locks the account for 15 minutes. Wait 15 minutes and try again with the correct password.

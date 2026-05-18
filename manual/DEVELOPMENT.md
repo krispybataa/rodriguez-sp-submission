@@ -1,4 +1,4 @@
-# Alagang MMC — Development Manual
+# Alagang MMC:  Development Manual
 
 ## System Overview
 
@@ -149,7 +149,7 @@ Imports clinicians from a CSV file in `a-mmc_backend/data/`. The files and their
 | `clinicians_real.csv` | Same 12 Rheumatology rows but with unmasked real names | Source data only — do not seed from this file; repo is public |
 | `clinicians_sample.csv` | Two-row example showing all column names and formats | Reference only |
 
-To assemble `clinicians_full.csv` before a production seed:
+To build `clinicians_full.csv` before a production seed:
 
 ```bash
 cp a-mmc_backend/data/clinicians_anon.csv a-mmc_backend/data/clinicians_full.csv
@@ -163,7 +163,7 @@ To import only the 12 Rheumatology test clinicians:
 docker compose exec a-mmc-backend python seed.py data/clinicians_anon.csv
 ```
 
-The CSV import is idempotent — rows where `login_email` already exists are skipped. For each Rheumatology clinician created, a `credentials_manifest.txt` is written to `a-mmc_backend/data/`.
+CSV import is idempotent,  rows where `login_email` already exists are skipped. For each Rheumatology clinician created, a `credentials_manifest.txt` is written to `a-mmc_backend/data/`.
 
 **Production seed**
 
@@ -223,26 +223,10 @@ Coverage threshold enforced by `.coveragerc` is **70%**. The following are exclu
 
 Tests require a running PostgreSQL instance. The CI workflow starts one as a service container. For local runs outside Docker, set `ACTIONS_TEST_DATABASE_URL` or configure `.env` with a reachable database.
 
-### Frontend
+### Frontend / Kiosk 
+No tests for these components have been made at the time of writing 
 
-```bash
-cd a-mmc_frontend
-npm test --if-present
-```
-
-Or via the Makefile:
-
-```bash
-make test-frontend
-```
-
-No frontend test suite is committed at this time. The `--if-present` flag ensures the CI step passes without failing the build.
-
-The kiosk has no test configuration.
-
----
-
-## Project Structure — Key Files
+## Project Structure: Key Files
 
 ### Backend
 
@@ -365,7 +349,7 @@ The `VITE_API_URL` and `VITE_MAIN_APP_URL` build arguments must be passed at Doc
 
 ## Architecture Notes
 
-### Auth
+### Authentication
 
 - Access token: 60 minutes, returned in response body as `{ "access_token": "..." }`. Stored in React memory (not localStorage).
 - Refresh token: 7 days, set as an httpOnly cookie named `refresh_token` (`samesite=Lax`).
@@ -378,11 +362,12 @@ The `VITE_API_URL` and `VITE_MAIN_APP_URL` build arguments must be passed at Doc
 
 Timeslots are pre-generated and stored in `CLINICIAN_TIMESLOT`. They are not created on demand.
 
-- `generate_slots()` is idempotent. It generates a 60-day rolling window from the current date. It does not commit — the caller commits.
+- `generate_slots()` is idempotent. It generates a 60-day rolling window from the current date. It does not commit; the caller commits.
 - `regenerate_slots_for_schedule_change()` is called when a clinician's schedule is saved. It replaces future slots for the affected schedule rows.
 - Appointments reference a slot row by `slot_id`. Slot status (`available` | `blocked`) is written only by C/S actions or when `max_patients` is reached. Booking, cancelling, and rescheduling do not write slot status.
 
 ### Email
+> NOTE: Email is not fully functional in production build, email outputs are verifiable via docker exec monitoring. 
 
 Eight notification functions are defined in `email_service.py`. When `MAIL_USERNAME` is not set, each function prints to stdout with the prefix `[EMAIL PREVIEW - not sent]`. No SMTP configuration is needed to run locally.
 
@@ -410,10 +395,10 @@ The kiosk is a separate Docker container built from a separate `Dockerfile`. It 
 
 Each service has its own Dockerfile:
 
-- `a-mmc_backend/Dockerfile` — Python 3.11 Alpine. Installs dependencies, copies source, runs `wait-for-postgres.sh` as the entrypoint, then starts with `flask db upgrade && gunicorn -b 0.0.0.0:$PORT --workers 2 --threads 1 'run:create_app()'`.
-- `a-mmc_frontend/Dockerfile` (named `dockerfile`, lowercase) — Node 20 Alpine. Runs `npm ci && npm run build`, then serves with `npm run preview`.
-- `a-mmc_kiosk/Dockerfile` — Node 20 Alpine. Accepts `VITE_API_URL` and `VITE_MAIN_APP_URL` as build args. Runs `npm ci && npm run build`, then serves with `npm run preview`.
-- `a-mmc_infra/nginx/Dockerfile` — nginx reverse proxy. Proxies `/api/*` to the backend container and `/` to the frontend container.
+- `a-mmc_backend/Dockerfile`:  Python 3.11 Alpine. Installs dependencies, copies source, runs `wait-for-postgres.sh` as the entrypoint, then starts with `flask db upgrade && gunicorn -b 0.0.0.0:$PORT --workers 2 --threads 1 'run:create_app()'`.
+- `a-mmc_frontend/Dockerfile` (named `dockerfile`, lowercase): Node 20 Alpine. Runs `npm ci && npm run build`, then serves with `npm run preview`.
+- `a-mmc_kiosk/Dockerfile`:  Node 20 Alpine. Accepts `VITE_API_URL` and `VITE_MAIN_APP_URL` as build args. Runs `npm ci && npm run build`, then serves with `npm run preview`.
+- `a-mmc_infra/nginx/Dockerfile`:  nginx reverse proxy. Proxies `/api/*` to the backend container and `/` to the frontend container.
 
 `compose.yaml` references images by name (set via `a-mmc_infra/.env`). To build and push updated images, build each Dockerfile individually and tag them to match the image names referenced in the Compose file.
 
@@ -422,7 +407,7 @@ Each service has its own Dockerfile:
 Three GitHub Actions workflows trigger on push to `main` when files in the corresponding service directory change. Each also supports `workflow_dispatch` for manual runs.
 
 **Backend workflow (`.github/workflows/backend_workflow.yml`):**
-1. Spins up a PostgreSQL 15 service container.
+1. Starts a PostgreSQL 15 service container.
 2. Installs Python 3.11 and runs `pip install -r requirements.txt`.
 3. Runs `flask db upgrade` against the test database (`ACTIONS_TEST_DATABASE_URL`).
 4. Runs `make test-backend` (pytest with coverage).
@@ -464,6 +449,9 @@ For production, set the following as environment variables on the host or deploy
 ---
 
 ## Known Constraints
+
+> The following are known limits and constaints discussed either in documentation or the final manuscript, fixes, implementations and plans to address may come in the future.  
+
 
 - **Single-instance only.** The JWT blocklist and account lockout state are in-memory. Multiple backend instances would not share this state. Replace with Redis before running multiple replicas.
 - **Container restart clears lockout and blocklist.** Any in-progress account lockout or revoked token is lost on restart.
